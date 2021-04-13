@@ -4,7 +4,7 @@ import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
 
 const burger = (props) => {
   //change object which is comming from burger builder to array
-  const transformedIngredients = Object.keys(props.ingredients) // salad ,bacon , cheese
+  let transformedIngredients = Object.keys(props.ingredients) // salad ,bacon , cheese
     //dar inja igkey ke az bala miad hamoon salad o chizo o gheyre ast ke felan tedad nadarad
 
     .map((igKey) => {
@@ -13,7 +13,15 @@ const burger = (props) => {
         .map((_, i) => {
           return <BurgerIngredient key={igKey + i} type={igKey} />;
         });
-    });
+    })
+    //simplyfy this array with reduc: arr is previous and el is current value and initial value []
+    .reduce((arr, el) => {
+      return arr.concat(el);
+    }, []);
+  if (transformedIngredients.length === 0) {
+    transformedIngredients = <p> Please start adding </p>;
+  }
+
   console.log(transformedIngredients);
   return (
     <div className={classes.Burger}>
