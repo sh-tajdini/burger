@@ -3,6 +3,13 @@ import classes from "./Modal.css";
 import Aux from "../../../hoc/Aux";
 import Bakcdrop from "../Backdrop/Backdrop";
 class Modal extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.show !== this.props.show;
+  }
+  componentWillUpdate() {
+    console.log("[Modal] Will Update");
+  }
+
   render() {
     return (
       <Aux>
