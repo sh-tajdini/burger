@@ -4,7 +4,11 @@ import Aux from "../../../hoc/Aux/Aux";
 import Bakcdrop from "../Backdrop/Backdrop";
 class Modal extends Component {
   shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.show !== this.props.show;
+    return (
+      nextProps.show !== this.props.show ||
+      // spinner is a child and if we want to see spinner we must update this by chainging the children(spinner)
+      nextProps.children !== this.props.children
+    );
   }
   componentWillUpdate() {
     console.log("[Modal] Will Update");
