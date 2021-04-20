@@ -6,7 +6,8 @@ const withErrorHandler = (WrappedComponent, axios) => {
     state = {
       error: null,
     };
-    componentDidMount() {
+    //The error handler didnt work Bcause comdidmou in hoc ,render after wraped component did mount(burger builder and interceptor didnt implement there so using comwill mount that run just before rendering)
+    componentWillMount() {
       axios.interceptors.request.use((req) => {
         this.setState({ error: null });
         return req;
