@@ -1,8 +1,11 @@
 import React from "react";
+//inject props from any component
+import { withRouter } from "react-router-dom";
 import classes from "./Burger.css";
 import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
 
 const burger = (props) => {
+  console.log(props);
   //change object which is comming from burger builder to array
   let transformedIngredients = Object.keys(props.ingredients) // salad ,bacon , cheese
     //dar inja igkey ke az bala miad hamoon salad o chizo o gheyre ast ke felan tedad nadarad
@@ -31,4 +34,4 @@ const burger = (props) => {
     </div>
   );
 };
-export default burger;
+export default withRouter(burger);
