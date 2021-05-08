@@ -23,7 +23,9 @@ class BurgerBuilder extends Component {
   state = {
     ingredients: null,
     totalPrice: 4,
+    // in purchasable ham ba vojood inke dar component dge ham estefade shode vali chon baraye ui neshand dadan hast lozooomi nadarad ba redux piade sazi shavad
     purchasable: false,
+    //in se taye payeeni lazem nist dar redux biaad chon local ast
     purchasing: false,
     loading: false,
     error: false,
