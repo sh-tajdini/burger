@@ -32,16 +32,16 @@ class BurgerBuilder extends Component {
   };
   //fetch data from backend
   componentDidMount() {
-    axios
-      .get(
-        "https://react-my-burger-f2217-default-rtdb.firebaseio.com/orders/ingredients.json"
-      )
-      .then((response) => {
-        this.setState({ ingredients: response.data });
-      })
-      .catch((error) => {
-        this.setState({ error: true });
-      });
+    // axios
+    //   .get(
+    //     "https://react-my-burger-f2217-default-rtdb.firebaseio.com/orders/ingredients.json"
+    //   )
+    //   .then((response) => {
+    //     this.setState({ ingredients: response.data });
+    //   })
+    //   .catch((error) => {
+    //     this.setState({ error: true });
+    //   });
   }
   updatePurchaseState(ingredients) {
     const sum = Object.keys(ingredients)
