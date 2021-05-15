@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import Aux from "../../hoc/Aux/Aux";
 import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
@@ -7,8 +8,8 @@ import Modal from "../../components/UI/Modal/Modal";
 import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
-import axios from "../../axios-orders";
 import * as burgerBuilderActions from "../../store/actions/index";
+import axios from "../../axios-orders";
 
 class BurgerBuilder extends Component {
   // constructor(props) {
@@ -20,21 +21,10 @@ class BurgerBuilder extends Component {
     // purchasable: false,
     //in se taye payeeni lazem nist dar redux biaad chon local ast
     purchasing: false,
-    loading: false,
-    error: false,
   };
   //fetch data from backend
   componentDidMount() {
-    axios
-      .get(
-        "https://react-my-burger-f2217-default-rtdb.firebaseio.com/orders/ingredients.json"
-      )
-      .then((response) => {
-        this.setState({ ingredients: response.data });
-      })
-      .catch((error) => {
-        this.setState({ error: true });
-      });
+    console.log(this.props);
   }
   updatePurchaseState(ingredients) {
     const sum = Object.keys(ingredients)
@@ -99,9 +89,7 @@ class BurgerBuilder extends Component {
         />
       );
     }
-    if (this.state.loading) {
-      orderSummary = <Spinner />;
-    }
+
     // {salad: true, meat: false, ...}
     return (
       <Aux>
