@@ -31,7 +31,7 @@ export const initIngredients = () => {
   return (dispatch) => {
     axios
       .get(
-        "https://react-my-burger-f2217-default-rtdb.firebaseio.com/orders/ingredients.json"
+        "https://react-my-burger-f2217-default-rtdb.firebaseio.com/ingredients.json"
       )
       .then((response) => {
         dispatch(setIngredients(response.data));
