@@ -3,6 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import CheckoutSummary from "../../components/Order/CheckoutSummary/CheckoutSummary";
 import ContactData from "./ContactData/ContactData";
 import { connect } from "react-redux";
+import * as actions from "../../store/actions/index";
 
 class Checkout extends Component {
   // state = {
@@ -37,9 +38,15 @@ class Checkout extends Component {
   render() {
     //if no ingredinets load go to burger builder and in there is a spinner that check if the ingredients load otr not
     let summary = <Redirect to="/" />;
+
     if (this.props.ings) {
+      //check & redirect
+      const purchasedRedirect = this.props.purchased ? (
+        <Redirect to="/" />
+      ) : null;
       summary = (
         <div>
+          {purchasedRedirect}
           <CheckoutSummary
             ingredients={this.props.ings}
             checkoutCancelled={this.checkoutCancelledHandler}
@@ -58,9 +65,8 @@ class Checkout extends Component {
 const mapStateToProps = (state) => {
   return {
     ings: state.burgerBuilder.ingredients,
+    purchased: state.order.purchased,
   };
 };
-
-//we dont need dispatch to props because we dont dispatch any thing just navigate from react router and redux
 
 export default connect(mapStateToProps)(Checkout);
