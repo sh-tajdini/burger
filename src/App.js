@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import BurgurBuilder from "./containers/BurgerBuilder/BurgerBuilder";
 import Layout from "./hoc/Layout/Layout";
@@ -36,5 +36,5 @@ const mapDispatchToProps = (dispatch) => {
     onTryAutoSignup: () => dispatch(actions.authCheckState()),
   };
 };
-export default connect(null, mapDispatchToProps)(App);
+export default withRouter(connect(null, mapDispatchToProps)(App));
 /////////
